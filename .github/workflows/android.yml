@@ -13,15 +13,19 @@ jobs:
       - uses: actions/checkout@v4
 
       
+ 
       - name: Extract starter ZIP
         run: |
-          if [ -f KYNORA_Android_Starter_FIXED.zip ]; then
-            unzip -o KYNORA_Android_Starter_FIXED.zip -d .
-          elif [ -f KYNORA_Android_Starter.zip ]; then
-            unzip -o KYNORA_Android_Starter.zip -d .
+          echo "Checking Premium ZIP..."
+          ls -lh *.zip
+          if [ -f KYNORA_Premium_UI_Starter.zip ]; then
+            echo "Extracting PREMIUM UI"
+            unzip -o KYNORA_Premium_UI_Starter.zip -d .
+          else
+            echo "ERROR: Premium ZIP not found"
+            exit 1
           fi
-       
-          
+ 
 
       - uses: actions/setup-java@v4
         with:
