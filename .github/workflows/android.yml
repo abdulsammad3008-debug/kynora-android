@@ -12,12 +12,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      
       - name: Extract starter ZIP
         run: |
-          if [ -f KYNORA_Android_Starter.zip ]; then
+          if [ -f KYNORA_Android_Starter_FIXED.zip ]; then
+            unzip -o KYNORA_Android_Starter_FIXED.zip -d .
+          elif [ -f KYNORA_Android_Starter.zip ]; then
             unzip -o KYNORA_Android_Starter.zip -d .
-            rm KYNORA_Android_Starter.zip
           fi
+          
 
       - uses: actions/setup-java@v4
         with:
