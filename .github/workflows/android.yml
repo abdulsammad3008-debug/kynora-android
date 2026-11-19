@@ -9,19 +9,19 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
 
-      
       - name: Extract starter ZIP
         run: |
-          if [ -f KYNORA_Android_Starter_FIXED.zip ]; then
+          if [ -f KYNORA_Premium_UI_Starter.zip ]; then
+            unzip -o KYNORA_Premium_UI_Starter.zip -d .
+          elif [ -f KYNORA_Android_Starter_FIXED.zip ]; then
             unzip -o KYNORA_Android_Starter_FIXED.zip -d .
           elif [ -f KYNORA_Android_Starter.zip ]; then
             unzip -o KYNORA_Android_Starter.zip -d .
           fi
-       
-          
 
       - uses: actions/setup-java@v4
         with:
